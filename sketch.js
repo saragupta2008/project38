@@ -11,7 +11,9 @@ var obstaclesGroup, obstacle1, obstacle2, obstacle3, obstacle4, obstacle5, obsta
 var score=0;
 
 var gameOver, restart;
-
+var index = 0;
+    var x = 0
+    var y
 localStorage["HighestScore"] = 0;
 
 function preload(){
@@ -94,6 +96,7 @@ function draw() {
     if(obstaclesGroup.isTouching(trex)){
         gameState = END;
     }
+    
   }
   else if (gameState === END) {
     gameOver.visible = true;
@@ -113,25 +116,23 @@ function draw() {
     cloudsGroup.setLifetimeEach(-1);
     
     
-      var index = 0;
-      var x = 0
-      var y 
+     
 
-    
-        index=index+1 
-        x=displayHeight-trex.distance;
-        y=y+200
-        trex[index-1].x=x
-        trex[index-1].y=y
+  
+      index=index+1 
+      x=displayWidth-obstaclesGroup.distance;
+      y=y+200
+      obstaclesGroup[index-1].x=x
+      obstaclesGroup[index-1].y=y
 
 
-        if (index === trex.index){
-       
-        camera.position.x= trex[index-1].y
-        camera.position.y= displayWidth/2
-        }
-        
-        
+      if (index === obstaclesGroup.index){
+     
+      camera.position.x= obstaclesGroup[index-1].y
+      camera.position.y= displayWidth/2
+      }
+      
+      
       
     
     if(mousePressedOver(restart)) {
